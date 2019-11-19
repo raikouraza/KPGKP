@@ -25,7 +25,7 @@ class GerejaController
             header('location:index.php?menu=jemaat&msg='.$msg);
         }
 //        $hasilGereja = $this->gerejaDao->getAllGereja();
-        require_once 'View/Gereja/Gereja.php';
+        require_once 'KP/GKP_KP/View/Gereja/Gereja.php';
     }
     function mengubahJemaat(){
 

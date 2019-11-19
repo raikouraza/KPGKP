@@ -77,7 +77,7 @@ class JemaatController
         }
         $hasilPekerjaan = $this->PekerjaanDao->getAllPekerjaan();
         $hasil = $this->JemaatDao->getAllJemaat();
-        require_once 'View/Jemaat.php';
+        require_once 'KP/GKP_KP/View/Jemaat.php';
     }
     function mengubahJemaat(){
 

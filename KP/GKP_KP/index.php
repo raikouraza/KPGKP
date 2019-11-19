@@ -87,13 +87,13 @@ if(!isset($_SESSION['approved_user'])){
 //                $cmd =  FILTER_INPUT(INPUT_GET,'command');
 //                $KehadiranController = new KehadiranController();
 //                if($cmd =="edit" && $_SESSION['userrole'] == 'admin'){
-//                    $kehadiranController->mengubahKehadiran();
+//                    $kehadiranController->Kehadiran_Form();
 //                }else{
-//                    $kehadiranController->mengolahKehadiran();
+//                    $kehadiranController->Kehadiran();
 //                }
 //                break;
-            default: $jemaatController->login();
-                break;
+//            default: $jemaatController->login();
+//                break;
             case 'logout' :
                 {
                     $_SESSION['approved_user'] = FALSE;

@@ -18,7 +18,7 @@ class KehadiranDaoImpl
     {
         $link = PDOUtility::get_koneksi();
         $link->beginTransaction();
-        $query = "INSERT INTO tbkehadiran(Kehadiran_Id, Kehadiran_Tanggal, Kehadiran_Jumlah_Wanita, Kehadiran_Jumlah_Pria, Kehadiran_Jumlah_Persembahan, Kehadiran_Gereja_Id) VALUES (?)";
+        $query = "INSERT INTO tbkehadiran(Kehadiran_Id, Kehadiran_Tanggal, Kehadiran_Jumlah_Wanita, Kehadiran_Jumlah_Pria, Kehadiran_Jumlah_Persembahan, Kehadiran_Gereja_Id) VALUES (?,?,?,?,?,?)";
         $statement = $link->prepare($query);
         $statement->bindValue(1, $kehadiran->getKehadiranId(), PDO::PARAM_STR);
         $statement->bindValue(2, $kehadiran->getKehadiranTanggal(), PDO::PARAM_STR);

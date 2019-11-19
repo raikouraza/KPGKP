@@ -82,11 +82,11 @@
                 foreach($kehadirans as $kehadiran){
                     echo '<tr>';
                     echo '<td>'.$kehadiran->getKehadiran .'</td>';
-                    echo '<td>'.$kehadiran->name_class.'</td>';
-                    echo '<td>'.$kehadiran->name_class.'</td>';
-                    echo '<td>'.$kehadiran->name_class.'</td>';
-                    echo '<td>'.$kehadiran->name_class.'</td>';
-                    echo '<td>'.$kehadiran->name_class.'</td>';
+                    echo '<td>'.$kehadiran->getKehadiranTanggal.'</td>';
+                    echo '<td>'.$kehadiran->getKehadiranJumlahWanita.'</td>';
+                    echo '<td>'.$kehadiran->getKehadiranJumlahPria.'</td>';
+                    echo '<td>'.$kehadiran->getKehadiranJumlahPersembahan.'</td>';
+                    echo '<td>'.$kehadiran->getKehadiranGereja.'</td>';
                     echo '<td><button onclick="deleteKehadiran(\'' .$kehadiran->Kehadiran_Id . '\');">Delete</button><button onclick="updateKehadiran(' . $kehadiran->Kehadiran_Id .')">Update</button></td>';
                     echo'</tr>';
                 }

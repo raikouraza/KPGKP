@@ -73,6 +73,7 @@ $data4 = trim($data4,",");
             padding: 10px;
         }
     </style>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
@@ -84,9 +85,8 @@ $data4 = trim($data4,",");
 <div class="row">
     <div class="col-sm-3"><!--kosong-->></div>
     <div class="col-sm-6">
-        <h1>Jumlah Kehadiran Pria dan Wanita</h1>
+        <h1 align="center">Jumlah Kehadiran Pria dan Wanita</h1>
         <canvas id="chart" style="width: 100%; height: 65vh; background: #ffffff; border: 1px solid #555652; margin-top: 10px;"></canvas>
-
         <script>
             var ctx = document.getElementById("chart").getContext('2d');
             var myChart = new Chart(ctx, {
@@ -122,7 +122,7 @@ $data4 = trim($data4,",");
                 options: {
                     scales: {scales:{yAxes: [{beginAtZero: false}], xAxes: [{autoskip: true, maxTicketsLimit: 20}]}},
                     tooltips:{mode: 'index'},
-                    legend:{display: true, position: 'top', labels: {fontColor: 'rgb(255,255,255)', fontSize: 16}}
+                    legend:{display: true, position: 'top', labels: {fontColor: 'rgb(0,0,0)', fontSize: 16}}
                 }
             });
 
@@ -139,9 +139,30 @@ $data4 = trim($data4,",");
     <div class="col-sm-3"><!--kosong-->></div>
     <div class="col-sm-6">
         <h1>Tabel Jumlah Kehadiran Pria dan Wanita</h1>
+        <table id="myTable"  class="display">
+            <thead>
+            <tr>
+                <th>Jumlah Kehadiran Wanita</th>
+                <th>Jumlah Kehadiran Pria</th>
+                <th>Action</th>
+            </tr>
 
-        <script>
-        </script>
+            </thead>
+            <tbody>
+            <?php
+
+            /* @var $kehadiran Kehadiran */
+            foreach($kehadirans as $kehadiran){
+                echo '<tr>';
+                echo '<td>'.$kehadiran->Kehadiran_Jumlah_Wanita .'</td>';
+                echo '<td>'.$kehadiran->Kehadiran_Jumlah_Pria .'</td>';
+                echo '<td><button onclick="deleteKehadiran(\'' .$kehadiran->Kehadiran_Id . '\');">Delete</button><button onclick="updateKehadiran(' . $kehadiran->Kehadiran_Id .')">Update</button></td>';
+                echo'</tr>';
+            }
+            ?>
+            </tbody>
+        </table>
+
     </div>
     <div class="col-sm-3">
 
