@@ -83,17 +83,17 @@ if(!isset($_SESSION['approved_user'])){
                     }
                 }
                 break;
-//            case 'kehadiran' :
-//                $cmd =  FILTER_INPUT(INPUT_GET,'command');
-//                $KehadiranController = new KehadiranController();
-//                if($cmd =="edit" && $_SESSION['userrole'] == 'admin'){
+            case 'kehadiran' :
+                $cmd =  FILTER_INPUT(INPUT_GET,'command');
+                $KehadiranController = new KehadiranController();
+                if($cmd =="edit" && $_SESSION['userrole'] == 'admin'){
 //                    $kehadiranController->Kehadiran_Form();
-//                }else{
-//                    $kehadiranController->Kehadiran();
-//                }
-//                break;
-//            default: $jemaatController->login();
-//                break;
+                }else{
+                    $KehadiranController->olahKehadiran();
+                }
+                break;
+            default: $jemaatController->login();
+                break;
             case 'logout' :
                 {
                     $_SESSION['approved_user'] = FALSE;

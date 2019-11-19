@@ -1,10 +1,8 @@
 <?php
-
-
+include_once '../DAO/KehadiranDaoImpl.php';
 class KehadiranController
 {
     private $KehadiranDao;
-
     /**
      * KehadiranController constructor.
      * @param $KehadiranDao
@@ -13,8 +11,7 @@ class KehadiranController
     {
         $this->KehadiranDao = new KehadiranDaoImpl();
     }
-
-    public function index(){
+    public function olahKehadiran(){
         //block below for delete
 //        $deleteCommand = filter_input(INPUT_GET, 'delcom');
 //        if (isset($deleteCommand) && $deleteCommand == 1) {
@@ -22,8 +19,8 @@ class KehadiranController
 //            $kehadiran = new Kehadiran();
 //            $kehadiran->setId($id);
 //            $this->kehadiranDao->deleteKehadiran($kehadiran);
-//        }
 
+//        }
         $submitted = filter_input(INPUT_POST,'btnSubmit');
         if(isset($submitted)){
             $kehadiran_tanggal = filter_input(INPUT_POST, 'txtNameClass');
@@ -37,13 +34,13 @@ class KehadiranController
             $kehadiran->setKehadiranJumlahPria($kehadiran_jumlah_pria);
             $kehadiran->setKehadiranJumlahPersembahan($kehadiran_jumlah_persembahan);
             $kehadiran->setKehadiranGereja($kehadiran_gereja);
+            $this->KehadiranDao->addKehadiran($kehadiran);
 
-            $this->KehadiranDao->add($kehadiran);
-            Utility::curl_get('http://localhost/RS_Server/service/Add_insurance_service.php',array('txtName'=>$name_class));
+//            Utility::curl_get('http://localhost/RS_Server/service/Add_insurance_service.php',array('txtName'=>$name_class));
 
         }
         $kehadirans = $this->KehadiranDao->getAllKehadiran();
-        include_once 'KP/GKP_KP/View/Kehadiran/Kehadiran.php';
+        require_once 'KP/GKP_KP/View/Kehadiran/Kehadiran.php';
     }
 //    public function update(){
 //        //For data fetch

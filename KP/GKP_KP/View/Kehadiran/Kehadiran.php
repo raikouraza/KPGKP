@@ -10,11 +10,9 @@ $data1 = '';
 $data2 = '';
 $data3 = '';
 $data4 = '';
-
 //query to get data from the table
 $sql = "SELECT Kehadiran_Jumlah_Pria, Kehadiran_Jumlah_Wanita, (Kehadiran_Jumlah_Pria+Kehadiran_Jumlah_Wanita) as Jumlah_Peserta,Kehadiran_Tanggal FROM tbkehadiran LIMIT 10";
 $result = mysqli_query($mysqli, $sql);
-
 //loop through the returned data
 while ($row = mysqli_fetch_array($result)) {
     //variabel di isi dengan data dari database
@@ -22,7 +20,6 @@ while ($row = mysqli_fetch_array($result)) {
     $data2 = $data2 . '"'. $row['Kehadiran_Jumlah_Wanita'] .'",';
     $data3 = $data3 . '"'. $row['Jumlah_Peserta'] .'",';
     $data4 = $data4 . '"'. $row['Kehadiran_Tanggal'] .'",';
-
 }
 $data1 = trim($data1,",");
 $data2 = trim($data2,",");
@@ -48,12 +45,10 @@ $data4 = trim($data4,",");
     <!––untuk chartjs end––>
 
     <!--data tables-->
-    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="Datatables/datatables.js"></script>
-    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="datatables.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="Datatables/datatables.css"/>
-    <link rel="stylesheet" type="text/css" href="datatables.min.js"/>
+    <script type="text/javascript" src="../../jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../datatables/datatables.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../datatables/datatables.css"/>
+    <link rel="stylesheet" type="text/css" href="../../datatables/datatables.min.js"/>
     <!--data tables end-->
     <title></title>
 
@@ -78,6 +73,7 @@ $data4 = trim($data4,",");
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
+
 <div class="jumbotron text-center">
     <h1> Data Kehadiran Pria dan Wanita GKP </h1>
     <p></p>
@@ -98,7 +94,7 @@ $data4 = trim($data4,",");
                             label: 'Jumlah Pria',
                             data: [<?php echo $data1; ?>],
                             backgroundColor: 'transparent',
-                            borderColor:'rgba(255,99,132)',
+                            borderColor:'rgb(35,131,241)',
                             borderWidth: 3
                         },
 
@@ -106,14 +102,14 @@ $data4 = trim($data4,",");
                                 label: 'Jumlah Wanita',
                                 data: [<?php echo $data2; ?>],
                                 backgroundColor: 'transparent',
-                                borderColor:'rgba(0,255,255)',
+                                borderColor:'rgb(238,68,47)',
                                 borderWidth: 3
                             },
                             {
                                 label: 'Jumlah Kehadiran',
                                 data: [<?php echo $data3; ?>],
                                 backgroundColor: 'transparent',
-                                borderColor:'rgb(210,12,0)',
+                                borderColor:'rgb(56,33,41)',
                                 borderWidth: 3
                             },
                         ]
@@ -129,55 +125,44 @@ $data4 = trim($data4,",");
         </script>
     </div>
     <div class="col-sm-3">
-
-
-
-
-        ></div>
+    </div>
 </div>
 <div class="row">
     <div class="col-sm-3"><!--kosong-->></div>
     <div class="col-sm-6">
         <h1>Tabel Jumlah Kehadiran Pria dan Wanita</h1>
-        <table id="myTable"  class="display">
+        <table id="myTable" class="display">
             <thead>
             <tr>
                 <th>Jumlah Kehadiran Wanita</th>
                 <th>Jumlah Kehadiran Pria</th>
-                <th>Action</th>
+                <th>Jumlah Kehadiran Total</th>
+<!--                <th>Action</th>-->
             </tr>
-
             </thead>
             <tbody>
             <?php
-
+            include_once 'C:\xampp\htdocs\KPGKP\KP\GKP_KP\DAO\KehadiranDaoImpl.php';
+            include_once 'C:\xampp\htdocs\KPGKP\KP\GKP_KP\PDOUtility.php';
+            $kehadiranDao = new KehadiranDaoImpl();
+            $kehadirans = $kehadiranDao->getAllKehadiran();
             /* @var $kehadiran Kehadiran */
             foreach($kehadirans as $kehadiran){
+                $total = ($kehadiran['Kehadiran_Jumlah_Wanita'] + $kehadiran['Kehadiran_Jumlah_Pria']);
                 echo '<tr>';
-                echo '<td>'.$kehadiran->Kehadiran_Jumlah_Wanita .'</td>';
-                echo '<td>'.$kehadiran->Kehadiran_Jumlah_Pria .'</td>';
-                echo '<td><button onclick="deleteKehadiran(\'' .$kehadiran->Kehadiran_Id . '\');">Delete</button><button onclick="updateKehadiran(' . $kehadiran->Kehadiran_Id .')">Update</button></td>';
-                echo'</tr>';
+                echo '<td>'.$kehadiran['Kehadiran_Jumlah_Wanita'] .'</td>';
+                echo '<td>'.$kehadiran['Kehadiran_Jumlah_Pria'] .'</td>';
+                echo '<td>'.$total .'</td>';
+//                echo '<td><button onclick="deleteKehadiran(\'' .$kehadiran['Kehadiran_Id']. '\');">Delete</button><button onclick="updateKehadiran(' . $kehadiran['Kehadiran_Id'] .')">Update</button></td>';
+//                echo'</tr>';
             }
             ?>
             </tbody>
         </table>
-
     </div>
     <div class="col-sm-3">
-
-
-
-
-        ></div>
+    </div>
 </div>
-<!--testing checkbox start-->
-<div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-</div>
-
-
 </body>
 <script>
     $(document).ready( function () {

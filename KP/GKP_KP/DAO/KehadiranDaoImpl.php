@@ -5,13 +5,23 @@ class KehadiranDaoImpl
 {
     public function getAllKehadiran()
     {
-        $link = PDOUtility::get_koneksi();
-        $link->beginTransaction();
-        $query = "SELECT * FROM tbkehadiran ORDER BY Kehadiran_Id";
-        $result = $link->query($query);
-        $result->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE,"Kehadiran");
-        $link = null;
-        return $result;
+            $link =  PDOUtility::get_koneksi();
+            try{
+                //query
+                $sql = "SELECT * FROM tbKehadiran ORDER BY Kehadiran_Id ";
+                //prepare
+                $stmt = $link->prepare($sql);
+                //execute
+                $stmt->execute();
+                $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Kehadiran');
+            }
+            catch(PDOException $err){
+                echo $err->getMessage();
+                die();
+            }
+            PDOUtility::close_koneksi($link);
+            return $stmt;
+
     }
 
     public function addKehadiran(Kehadiran $kehadiran)
@@ -69,15 +79,20 @@ class KehadiranDaoImpl
         $link = null;
     }
 
-    function getKehadiran($id)
+    function getKehadiran(Kehadiran $kehadiran)
     {
         $link = PDOUtility::get_koneksi();
         $query = "SELECT * FROM tbkehadiran WHERE Kehadiran_Id = ? LIMIT 1";
         $statement = $link->prepare($query);
-        $statement->bindParam(1, $Kehadiran_Id, PDO::PARAM_STR);
+        $statement->bindValue(1, $kehadiran->getKehadiranId(), PDO::PARAM_STR);
         $statement->execute();
         $result = $statement->fetchObject('Kehadiran');
         $link = null;
         return $result;
+    }
+
+    function showByDate(){
+
+
     }
 }
