@@ -119,8 +119,8 @@ $data2 = trim($data2,",");
                 </thead>
                 <tbody>
                 <?php
-                include_once 'C:\xampp\htdocs\KPGKP\KP\GKP_KP\DAO\KehadiranDaoImpl.php';
-                include_once 'C:\xampp\htdocs\KPGKP\KP\GKP_KP\PDOUtility.php';
+                include_once 'C:\xampp\htdocs\KPGKP\GKP_KP\DAO\KehadiranDaoImpl.php';
+                include_once 'C:\xampp\htdocs\KPGKP\GKP_KP\PDOUtility.php';
                 $kehadiranDao = new KehadiranDaoImpl();
                 $kehadirans = $kehadiranDao->getAllKehadiran();
                 /* @var $kehadiran Kehadiran */

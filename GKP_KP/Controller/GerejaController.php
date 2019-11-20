@@ -15,6 +15,7 @@ class GerejaController
     }
 
     function mengolahGereja(){
+        $hasilGereja = $this->gerejaDao->getAllGereja();
         $btnSubmit = FILTER_INPUT(INPUT_POST, 'btnSubmitGereja');
         if($btnSubmit){
             $gnama = FILTER_INPUT(INPUT_POST, 'nama');
@@ -22,12 +23,20 @@ class GerejaController
             $gereja = new Gereja();
             $msg = $this->gerejaDao->insertGereja($gereja);
 
-            header('location:index.php?menu=jemaat&msg='.$msg);
+            header('location:index.php?menu=gereja&msg='.$msg);
         }
-//        $hasilGereja = $this->gerejaDao->getAllGereja();
-        require_once 'KP/GKP_KP/View/Gereja/Gereja.php';
+        $btnCommand=FILTER_INPUT(INPUT_GET,'command');
+        if ($btnCommand=='delete'){
+            $id=FILTER_INPUT(INPUT_GET,'id');
+            $gereja=new Gereja();
+            $gereja->setGerejaId($id);
+
+            $msg=$this->gerejaDao->deleteGereja($gereja);
+            header("location:index.php");
+        }
+        require_once 'View/Gereja/Gereja.php';
     }
-    function mengubahJemaat(){
+    function mengubahGereja(){
 
     }
 

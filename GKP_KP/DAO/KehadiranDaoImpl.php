@@ -1,6 +1,4 @@
 <?php
-
-
 class KehadiranDaoImpl
 {
     public function getAllKehadiran()
@@ -21,7 +19,6 @@ class KehadiranDaoImpl
             }
             PDOUtility::close_koneksi($link);
             return $stmt;
-
     }
 
     public function addKehadiran(Kehadiran $kehadiran)
@@ -91,8 +88,4 @@ class KehadiranDaoImpl
         return $result;
     }
 
-    function showByDate(){
-
-
-    }
 }

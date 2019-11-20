@@ -84,13 +84,8 @@ if(!isset($_SESSION['approved_user'])){
                 }
                 break;
             case 'kehadiran' :
-                $cmd =  FILTER_INPUT(INPUT_GET,'command');
-                $KehadiranController = new KehadiranController();
-                if($cmd =="edit" && $_SESSION['userrole'] == 'admin'){
-//                    $kehadiranController->Kehadiran_Form();
-                }else{
-                    $KehadiranController->olahKehadiran();
-                }
+                $kehadiranController=new KehadiranController();
+                $kehadiranController->index();
                 break;
             default: $jemaatController->login();
                 break;
@@ -107,7 +102,6 @@ if(!isset($_SESSION['approved_user'])){
 
                 }break;
         }
-
         if (!isset($nav))
         {
             $jemaatController->login();

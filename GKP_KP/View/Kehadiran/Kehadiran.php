@@ -29,7 +29,6 @@ $data4 = trim($data4,",");
 <!DOCTYPE html>
 <html>
 <head>
-
     <!––untuk bootstrap start––>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,12 +37,10 @@ $data4 = trim($data4,",");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!––untuk bootstrap end––>
-
     <!––untuk chartjs start––>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
     <!––untuk chartjs end––>
-
     <!--data tables-->
     <script type="text/javascript" src="../../jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="../../datatables/datatables.js"></script>
@@ -142,8 +139,8 @@ $data4 = trim($data4,",");
             </thead>
             <tbody>
             <?php
-            include_once 'C:\xampp\htdocs\KPGKP\KP\GKP_KP\DAO\KehadiranDaoImpl.php';
-            include_once 'C:\xampp\htdocs\KPGKP\KP\GKP_KP\PDOUtility.php';
+            include_once 'C:\xampp\htdocs\KPGKP\GKP_KP\DAO\KehadiranDaoImpl.php';
+            include_once 'C:\xampp\htdocs\KPGKP\GKP_KP\PDOUtility.php';
             $kehadiranDao = new KehadiranDaoImpl();
             $kehadirans = $kehadiranDao->getAllKehadiran();
             /* @var $kehadiran Kehadiran */
