@@ -52,21 +52,17 @@ $data2 = trim($data2,",");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!––untuk bootstrap end––>
-
     <!––untuk chartjs start––>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
     <!––untuk chartjs end––>
-
     <!--data tables-->
     <script type="text/javascript" src="../../jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="../../datatables/datatables.js"></script>
     <link rel="stylesheet" type="text/css" href="../../datatables/datatables.css"/>
     <link rel="stylesheet" type="text/css" href="../../datatables/datatables.min.js"/>
     <!--data tables end-->
-
 </head>
-
 <body>
 <div class="jumbotron text-center">
     <h1> Data Kehadiran Pria dan Wanita GKP </h1>
@@ -89,7 +85,8 @@ $data2 = trim($data2,",");
                                     label: 'Jumlah Persembahan',
                                     data: [<?php echo $data2; ?>],
                                     backgroundColor: 'transparent',
-                                    borderColor:'rgba(0,255,255)',
+                                    borderColor:'rgb(0,37,255)',
+                                    backgroundColor: 'rgb(38,133,255)',
                                     borderWidth: 3
                                 }
                             ]
@@ -102,6 +99,8 @@ $data2 = trim($data2,",");
                 });
             </script>
             <div class="col-sm-3">
+                <button id="save-btn" name="save-btn" onclick="download()">Export to PNG</button>
+                <button id="save-btn2" name="save-btn" onclick="download()">Export to jpg</button>
             </div>
     </div>
 </div>
@@ -144,5 +143,21 @@ $data2 = trim($data2,",");
     $(document).ready( function () {
         $('#myTable').DataTable();
     } );
+</script>
+<!--export graph to png -->
+<script>
+    $("#save-btn").click(function () {
+        $("#chart").get(0).toBlob(function (blob) {
+            saveAs(blob, "chartKehadiran.png")
+        })
+    })
+</script>
+<!--export graph to jpg-->
+<script>
+    $("#save-btn2").click(function () {
+        $("#chart").get(0).toBlob(function (blob) {
+            saveAs(blob, "chartKehadiran.jpg")
+        })
+    })
 </script>
 </html>

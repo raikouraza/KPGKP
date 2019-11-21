@@ -12,12 +12,15 @@ $gerejas = $GerejaDao->getAllGereja();
 <!DOCTYPE html>
 <html></html>
 <head>
+
+    <link rel="stylesheet" type="text/css" href="css_Form.css"
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <!-- date picker -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -30,15 +33,17 @@ $gerejas = $GerejaDao->getAllGereja();
     <link rel="stylesheet" type="text/css" href="../../datatables/datatables.css"/>
     <link rel="stylesheet" type="text/css" href="../../datatables/datatables.min.js"/>
     <!--data tables end-->
+
+
 </head>
 <body>
     <div id="container" align="center">
     <form action="" method="POST">
             <legend>Form Data Kehadiran</legend>
-            <table>
+            <table border="1x" align="center" cellpadding="5" cellspacing="5" style="text-align:center">
                 <tr>
                     <td>Masukan Data Kehadiran:</td>
-                    <td><input type="text" name="idKehadiran" class="form-control" name="txtId" autofocus required placeholder="Masukan Nama Gereja"><br></td>
+                    <td><input type="text" name="idkehadiran" class="form-control" name="txtId" autofocus required placeholder="Masukan id kehadiran" align="center"><br></td>
                 </tr>
                 <tr>
                     <td>Masukan Jumlah Wanita Yang Hadir:</td>
