@@ -9,6 +9,40 @@ class Gereja
     private $gereja_alamat;
     private $gereja_kota;
     private $gereja_rt;
+    private $gereja_rw;
+    private $gereja_kodepos;
+
+    /**
+     * @return mixed
+     */
+    public function getGerejaRw()
+    {
+        return $this->gereja_rw;
+    }
+
+    /**
+     * @param mixed $gereja_rw
+     */
+    public function setGerejaRw($gereja_rw)
+    {
+        $this->gereja_rw = $gereja_rw;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGerejaKodepos()
+    {
+        return $this->gereja_kodepos;
+    }
+
+    /**
+     * @param mixed $gereja_kodepos
+     */
+    public function setGerejaKodepos($gereja_kodepos)
+    {
+        $this->gereja_kodepos = $gereja_kodepos;
+    }
     private $gereja_kecamatan;
     private $gereja_kelurahan;
     private $gereja_telp;

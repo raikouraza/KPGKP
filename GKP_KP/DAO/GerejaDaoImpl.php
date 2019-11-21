@@ -31,14 +31,14 @@ class GerejaDaoImpl
 
             $stmt->bindValue(1,$gereja->getGerejaId(),PDO::PARAM_STR);
             $stmt->execute();
-            $link->commit();
             $msg="suksesd";
+            $link->commit();
         }catch (PDOException $exception){
             $link->rollBack();
             $exception->getMessage();
             die();
         }
-        PDOUtility::close_koneksi();
+        PDOUtility::close_koneksi($link);
         return $msg;
     }
 }
