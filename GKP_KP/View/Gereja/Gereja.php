@@ -1,15 +1,15 @@
 <script>
-    function Kosong(){
-        var cnama = document.getElementById("nama").value;
-
-        if(cnama.trim()==""){
-            alert("Nama !");
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
+    // function Kosong(){
+    //     var cnama = document.getElementById("nama").value;
+    //
+    //     if(cnama.trim()==""){
+    //         alert("Nama !");
+    //         return false;
+    //     }
+    //     else{
+    //         return true;
+    //     }
+    // }
 </script>
 
 
@@ -35,8 +35,9 @@
     <br/>
     <br/>
     <?php
+
     ?>
-    <table class ="display" id="jemaat">
+    <table class ="display" id="gereja">
         <thead>
         <tr>
             <th>
@@ -58,15 +59,19 @@
         </thead>
         <tbody>
         <?php
-//        $no=1;
-//        while($data = $hasilGereja->fetch()){
-//            ?>
-<!--            <tr>-->
-<!---->
-<!--            </tr>-->
-<!--            --><?php
-//            $no=$no+1;
-//        }
+        while($data=$hasilGereja->fetch()) {
+            ?>
+            <tr>
+                <td><?php echo $data->getGerejaNama() ;?></td>
+                <td><?php echo $data->getGerejaAlamat() ;?></td>
+                <td><?php echo $data->getGerejaTelp() ;?></td>
+                <td><?php echo $data->getGerejaPemilik() ;?></td>
+                <td><input type="button" value="Edit" name="btnEdit" onclick="">
+                    <input type="button" value="Delete" name="btnDelete" onclick="deleteGereja(<?php echo $data->getGerejaId();?>)">
+                </td>
+            </tr>
+            <?php
+        }
 //        ?>
         </tbody>
     </table>
@@ -124,6 +129,6 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#jemaat').DataTable();
+        $('#gereja').DataTable();
     });
 </script>
