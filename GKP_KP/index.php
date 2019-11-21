@@ -1,8 +1,8 @@
 <?php
-SESSION_START();
-if(!isset($_SESSION['approved_user'])){
-    $_SESSION['approved_user'] = FALSE;
-}
+//session_start();
+//if(!isset($_SESSION['approved_user'])){
+//    $_SESSION['approved_user'] = FALSE;
+//}
 ?>
 <!DOCTYPE html>
 <html>
