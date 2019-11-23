@@ -12,51 +12,11 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-<!--    <script>-->
-<!--        $(function() {-->
-<!--            $('input[name="daterange"]').daterangepicker({-->
-<!--                opens: 'left'-->
-<!--            }, function(start, end, label) {-->
-<!--                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));-->
-<!--            });-->
-<!--        });-->
-<!--    </script>-->
     <?php
     include_once 'C:\xampp\htdocs\KPGKP\GKP_KP\DAO\KehadiranDaoImpl.php';
     include_once 'C:\xampp\htdocs\KPGKP\GKP_KP\PDOUtility.php';
-    include_once '../../Entity/Checkbox.php';
-
-    if()
-
-
-
-
-
-
-
-
-
-
-
-//    if (isset($_POST['submit'])) {//to run PHP script on submit
-//        if (!empty($_POST['check'])) {
-//            foreach ($_POST['check'] as $selected) {
-//                echo $selected . "</br>";
-//            }
-//        }
-//    }
-//    $checkbox = new Checkbox();
-//    $checkbox->setJumlahPria();
-//    $checkbox->setJumlahWanita();
-//    $checkbox->setJumlahTotal();
-
-//    $kehadiranDao = new KehadiranDaoImpl();
-//    $kehadirans = $kehadiranDao->getAllKehadiran();
-//    if(isset($_POST["submit"])){
-//        $jumlaharray=$_POST["check"];
-//    }
-
     ?>
+
 </head>
 <body>
 <div class="jumbotron text-center">
@@ -86,16 +46,13 @@
                 </label>
             </div>
 <!--            <div class="form-check">-->
-<!--                <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />-->
+<!--                <label>Tanggal Awal </label>-->
+<!--                <input type="date" name="dateawal" id="dateawal">-->
 <!--            </div>-->
-            <div class="form-check">
-                <label>Tanggal Awal </label>
-                <input type="date" name="dateawal" id="dateawal">
-            </div>
-            <div class="form-check">
-                <label>Tanggal Akhir</label>
-                <input type="date" name="dateakhir" id="dateakhir">
-            </div>
+<!--            <div class="form-check">-->
+<!--                <label>Tanggal Akhir</label>-->
+<!--                <input type="date" name="dateakhir" id="dateakhir">-->
+<!--            </div>-->
             <button type="submit" class="btn btn-primary" name="submitBtn" id="submitBtn" >Submit</button>
         </form>
     </div>

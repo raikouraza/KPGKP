@@ -1,5 +1,4 @@
 <?php
-
 /* Database connection settings */
 $host = 'localhost';
 $user = 'root';
@@ -12,10 +11,9 @@ $data2 = '';
 $data3 = '';
 $data4 = '';
 //query to get data from the table
-$sql = "SELECT Kehadiran_Jumlah_Pria, Kehadiran_Jumlah_Wanita, (Kehadiran_Jumlah_Pria+Kehadiran_Jumlah_Wanita) as Jumlah_Peserta,Kehadiran_Tanggal FROM tbkehadiran LIMIT 10";
+$sql = "SELECT Kehadiran_Jumlah_Pria, Kehadiran_Jumlah_Wanita, (Kehadiran_Jumlah_Pria+Kehadiran_Jumlah_Wanita) as Jumlah_Peserta,Kehadiran_Tanggal FROM tbkehadiran";
 $result = mysqli_query($mysqli, $sql);
 //loop through the returned data
-
 while ($row = mysqli_fetch_array($result)) {
     //variabel di isi dengan data dari database
     $data1 = $data1 . '"'. $row['Kehadiran_Jumlah_Pria'].'",';
@@ -60,7 +58,6 @@ $data4 = trim($data4,",");
     <script src="../../js/FileSaver.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
     <title></title>
-
 <!--    <script>-->
 <!--        $("save-btn").click(function () {-->
 <!--            $("#canvas".get(myChart).toBlob(function (blob) {-->
@@ -84,30 +81,30 @@ $data4 = trim($data4,",");
         <h1 align="center">Jumlah Kehadiran Pria dan Wanita</h1>
         <canvas id="chart" style="width: 100%; height: 65vh; background: #ffffff; border: 1px solid #555652; margin-top: 10px;"></canvas>
         <script>
-
             var ctx = document.getElementById("chart").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: [<?php echo $data4; ?>],
                     datasets:
-                        [{
-                            label: 'Jumlah Pria',
-                            data: [<?php echo $data1; ?>],
-                            backgroundColor: 'rgb(38,133,255)',
-                            borderColor:'rgb(0,37,255)',
-                            borderWidth: 3
-                        },
+                        [
                             {
-                                label: 'Jumlah Wanita',
-                                data: [<?php echo $data2; ?>],
+                                label:<?php  if (isset($_POST['CheckboxPria'])){echo 'Jumlah Pria';}?>,
+                                data: [<?php  if (isset($_POST['CheckboxPria'])){echo $data1; }?>],
+                                backgroundColor: 'rgb(38,133,255)',
+                                borderColor:'rgb(0,37,255)',
+                                borderWidth: 3
+                            },
+                            {
+                                label: <?php if(isset($_POST['CheckboxWanita'])){echo'Jumlah Wanita';}?>,
+                                data: [<?php if(isset($_POST['CheckboxWanita'])){echo $data2; }?>],
                                 backgroundColor: 'rgb(238,68,47)',
                                 borderColor:'rgb(183,0,0)',
                                 borderWidth: 3
                             },
                             {
-                                label: 'Jumlah Kehadiran',
-                                data: [<?php echo $data3; ?>],
+                                label: <?php if (isset($_POST['CheckboxTotal'])){echo 'Jumlah Kehadiran';}?>,
+                                data: [<?php if (isset($_POST['CheckboxTotal'])){echo $data3;} ?>],
                                 backgroundColor: 'rgb(194,107,142)',
                                 borderColor:'rgb(56,33,41)',
                                 borderWidth: 3

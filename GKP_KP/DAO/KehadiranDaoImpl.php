@@ -40,7 +40,6 @@ class KehadiranDaoImpl
         }
         $link = null;
     }
-
     function deleteKehadiran(Kehadiran $kehadiran)
     {
         $link = PDOUtility::get_koneksi();
@@ -55,7 +54,6 @@ class KehadiranDaoImpl
         }
         $link = null;
     }
-
     function updateKehadiran(Kehadiran $kehadiran)
     {
         $link = PDOUtility::get_koneksi();
@@ -75,7 +73,6 @@ class KehadiranDaoImpl
         }
         $link = null;
     }
-
     function getKehadiran(Kehadiran $kehadiran)
     {
         $link = PDOUtility::get_koneksi();
@@ -87,5 +84,28 @@ class KehadiranDaoImpl
         $link = null;
         return $result;
     }
+//    public function getAllKehadiranTanggal(Kehadiran $kehadiran)
+//    {
+//        $link =  PDOUtility::get_koneksi();
+//        try{
+//            //query
+//            $sql = "SELECT Kehadiran_Jumlah_Pria, Kehadiran_Jumlah_Wanita, (Kehadiran_Jumlah_Pria+Kehadiran_Jumlah_Wanita) as Jumlah_Peserta,Kehadiran_Tanggal FROM tbkehadiran where kehadiran_Tanggal between ? and ?";
+//            //prepare
+//            $stmt = $link->prepare($sql);
+//            $stmt->bindValue(1, $kehadiran->getKehadiranTanggal(), PDO::PARAM_STR);
+//            $stmt->bindValue(2, $kehadiran->getKehadiranTanggal(), PDO::PARAM_STR);
+//
+//
+//            //execute
+//            $stmt->execute();
+//            $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Kehadiran');
+//        }
+//        catch(PDOException $err){
+//            echo $err->getMessage();
+//            die();
+//        }
+//        PDOUtility::close_koneksi($link);
+//        return $stmt;
+//    }
 
 }
