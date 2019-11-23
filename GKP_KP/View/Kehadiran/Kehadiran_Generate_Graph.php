@@ -12,16 +12,51 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<!--    <script>-->
+<!--        $(function() {-->
+<!--            $('input[name="daterange"]').daterangepicker({-->
+<!--                opens: 'left'-->
+<!--            }, function(start, end, label) {-->
+<!--                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
+    <?php
+    include_once 'C:\xampp\htdocs\KPGKP\GKP_KP\DAO\KehadiranDaoImpl.php';
+    include_once 'C:\xampp\htdocs\KPGKP\GKP_KP\PDOUtility.php';
+    include_once '../../Entity/Checkbox.php';
 
-    <script>
-        $(function() {
-            $('input[name="daterange"]').daterangepicker({
-                opens: 'left'
-            }, function(start, end, label) {
-                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-            });
-        });
-    </script>
+    if()
+
+
+
+
+
+
+
+
+
+
+
+//    if (isset($_POST['submit'])) {//to run PHP script on submit
+//        if (!empty($_POST['check'])) {
+//            foreach ($_POST['check'] as $selected) {
+//                echo $selected . "</br>";
+//            }
+//        }
+//    }
+//    $checkbox = new Checkbox();
+//    $checkbox->setJumlahPria();
+//    $checkbox->setJumlahWanita();
+//    $checkbox->setJumlahTotal();
+
+//    $kehadiranDao = new KehadiranDaoImpl();
+//    $kehadirans = $kehadiranDao->getAllKehadiran();
+//    if(isset($_POST["submit"])){
+//        $jumlaharray=$_POST["check"];
+//    }
+
+    ?>
 </head>
 <body>
 <div class="jumbotron text-center">
@@ -30,31 +65,38 @@
     <div class="col-sm-3"><!--kosong--></div>
     <div class="col-sm-6">
         <h1 align="center">Form Data Kehadiran</h1>
-        <form>
+        <form action="Kehadiran.php" method="post">
             <p>Pilih data yang akan ditampilkan :</p>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <input class="form-check-input" type="checkbox" value="JumlahWanita" id="check" name="CheckboxWanita">
                 <label class="form-check-label" for="defaultCheck1">
                     Jumlah Kehadiran Wanita
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
+                <input class="form-check-input" type="checkbox" value="JumlahPria" id="check" name="CheckboxPria">
                 <label class="form-check-label" for="defaultCheck2">
-                    Jumlah Kehadiran Wanita
+                    Jumlah Kehadiran Pria
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck3" >
+                <input class="form-check-input" type="checkbox" value="JumlahTotal" id="check" name="CheckboxTotal">
                 <label class="form-check-label" for="defaultCheck3">
                     Jumlah Keseluruhan
                 </label>
             </div>
+<!--            <div class="form-check">-->
+<!--                <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />-->
+<!--            </div>-->
             <div class="form-check">
-                <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                <label>Tanggal Awal </label>
+                <input type="date" name="dateawal" id="dateawal">
             </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-check">
+                <label>Tanggal Akhir</label>
+                <input type="date" name="dateakhir" id="dateakhir">
+            </div>
+            <button type="submit" class="btn btn-primary" name="submitBtn" id="submitBtn" >Submit</button>
         </form>
     </div>
     <div class="col-sm-3"><!--kosong--></div>

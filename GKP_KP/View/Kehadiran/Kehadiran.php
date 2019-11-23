@@ -1,20 +1,21 @@
 <?php
-///* Database connection settings */
-//$host = 'localhost';
-//$user = 'root';
-//$pass = '';
-//$db = 'dbgkp';
-//$mysqli = new mysqli($host,$user,$pass,$db) or die($mysqli->error);
-////utk storing data yang akan di echo
-//$data1 = '';
-//$data2 = '';
-//$data3 = '';
-//$data4 = '';
-////query to get data from the table
-//$sql = "SELECT Kehadiran_Jumlah_Pria, Kehadiran_Jumlah_Wanita, (Kehadiran_Jumlah_Pria+Kehadiran_Jumlah_Wanita) as Jumlah_Peserta,Kehadiran_Tanggal FROM tbkehadiran LIMIT 10";
-//$result = mysqli_query($mysqli, $sql);
+
+/* Database connection settings */
+$host = 'localhost';
+$user = 'root';
+$pass = '';
+$db = 'dbgkp';
+$mysqli = new mysqli($host,$user,$pass,$db) or die($mysqli->error);
+//utk storing data yang akan di echo
+$data1 = '';
+$data2 = '';
+$data3 = '';
+$data4 = '';
+//query to get data from the table
+$sql = "SELECT Kehadiran_Jumlah_Pria, Kehadiran_Jumlah_Wanita, (Kehadiran_Jumlah_Pria+Kehadiran_Jumlah_Wanita) as Jumlah_Peserta,Kehadiran_Tanggal FROM tbkehadiran LIMIT 10";
+$result = mysqli_query($mysqli, $sql);
 //loop through the returned data
- PDOUtility2::get_koneksi2();
+
 while ($row = mysqli_fetch_array($result)) {
     //variabel di isi dengan data dari database
     $data1 = $data1 . '"'. $row['Kehadiran_Jumlah_Pria'].'",';
@@ -67,6 +68,7 @@ $data4 = trim($data4,",");
 <!--            }));-->
 <!--        });-->
 <!--    </script>-->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
@@ -82,6 +84,7 @@ $data4 = trim($data4,",");
         <h1 align="center">Jumlah Kehadiran Pria dan Wanita</h1>
         <canvas id="chart" style="width: 100%; height: 65vh; background: #ffffff; border: 1px solid #555652; margin-top: 10px;"></canvas>
         <script>
+
             var ctx = document.getElementById("chart").getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'bar',
@@ -172,6 +175,7 @@ $data4 = trim($data4,",");
         </table>
     </div>
     <div class="col-sm-3">
+
     </div>
 </div>
 </body>
