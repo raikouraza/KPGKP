@@ -45,14 +45,14 @@
                     Jumlah Keseluruhan
                 </label>
             </div>
-<!--            <div class="form-check">-->
-<!--                <label>Tanggal Awal </label>-->
-<!--                <input type="date" name="dateawal" id="dateawal">-->
-<!--            </div>-->
-<!--            <div class="form-check">-->
-<!--                <label>Tanggal Akhir</label>-->
-<!--                <input type="date" name="dateakhir" id="dateakhir">-->
-<!--            </div>-->
+            <div class="form-check">
+                <label>Tanggal Awal </label>
+                <input type="date" name="dateawal" id="dateawal">
+            </div>
+            <div class="form-check">
+                <label>Tanggal Akhir</label>
+                <input type="date" name="dateakhir" id="dateakhir">
+            </div>
             <button type="submit" class="btn btn-primary" name="submitBtn" id="submitBtn" >Submit</button>
         </form>
     </div>

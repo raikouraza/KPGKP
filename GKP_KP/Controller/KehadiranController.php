@@ -68,5 +68,22 @@ class KehadiranController
         }
         $kehadirans = $this->KehadiranDao->getAllKehadiran();
         include_once 'GKP_KP/View/Kehadiran/Kehadiran_Form.php';
+
+
+    }
+    public function GraphbyDate(){
+        //Update Function
+        $kehadiran = new Kehadiran();
+        $submitted = filter_input(INPUT_POST,'btnSubmit');
+        if(isset($submitted)){
+
+            $kehadiran_tanggal1 = filter_input(INPUT_POST,'dateawal');
+
+            $kehadiran_tanggal2 = filter_input(INPUT_POST,'dateakhir');
+                $kehadiran->setKehadiranTanggal1($kehadiran_tanggal1);
+                $kehadiran->setKehadiranTanggal2($kehadiran_tanggal2);
+
+        }
+        $kehadirans = $this->KehadiranDao->getAllKehadiranTanggal();
     }
 }

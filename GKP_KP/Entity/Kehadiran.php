@@ -5,10 +5,47 @@ class Kehadiran
 {
     private $kehadiran_id;
     private $kehadiran_tanggal;
+    private $kehadiran_tanggal1;
+    private $kehadiran_tanggal2;
+
+    /**
+     * @return mixed
+     */
+    public function getKehadiranTanggal2()
+    {
+        return $this->kehadiran_tanggal2;
+    }
+
+    /**
+     * @param mixed $kehadiran_tanggal2
+     */
+    public function setKehadiranTanggal2($kehadiran_tanggal2)
+    {
+        $this->kehadiran_tanggal2 = $kehadiran_tanggal2;
+    }
     private $kehadiran_jumlah_wanita;
     private $kehadiran_jumlah_pria;
     private $kehadiran_jumlah_persembahan;
     private $kehadiran_gereja;
+    /**
+     * Kehadiran constructor.
+     * @param $gereja
+     */
+    /**
+     * @return mixed
+     */
+    public function getKehadiranTanggal1()
+    {
+        return $this->kehadiran_tanggal1;
+    }
+
+    /**
+     * @param mixed $kehadiran_tanggal1
+     */
+    public function setKehadiranTanggal1($kehadiran_tanggal1)
+    {
+        $this->kehadiran_tanggal1 = $kehadiran_tanggal1;
+    }
     /**
      * Kehadiran constructor.
      * @param $gereja
