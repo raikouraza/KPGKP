@@ -7,12 +7,13 @@ class GerejaDaoImpl
         $link =  PDOUtility::get_koneksi();
         try{
             //query
-            $sql = "SELECT gereja_id,gereja_nama,gereja_alamat,gereja_telp,gereja_pemilik from tbGereja ORDER BY gereja_id ";
+            $sql = "SELECT * from tbgereja ORDER BY gereja_ID ";
             //prepare
             $stmt = $link->prepare($sql);
             //execute
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Gereja');
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
         catch(PDOException $err){
             echo $err->getMessage();
@@ -26,7 +27,7 @@ class GerejaDaoImpl
     {
         $link=PDOUtility::get_koneksi();
         try{
-            $sql="DELETE FROM tbGereja WHERE gereja_id=?";
+            $sql="DELETE FROM tbGereja WHERE gereja_ID=?";
             $stmt=$link->prepare($sql);
 
             $stmt->bindValue(1,$gereja->getGerejaId(),PDO::PARAM_STR);

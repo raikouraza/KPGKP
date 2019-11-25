@@ -19,6 +19,14 @@ class PDOUtility
     public static function close_koneksi(PDO $link){
         $link =NULL;
     }
+    public static function createMySQLConnection(){
+    $link = new PDO('mysql:host=localhost;dbname=dbgkp','root','');
+    $link->setAttribute(PDO::ATTR_AUTOCOMMIT,false);
+    $link->setAttribute(PDO::ATTR_ERRMODE ,PDO::ERRMODE_EXCEPTION);
+
+    return $link;
+
+}
 }
 
 ?>

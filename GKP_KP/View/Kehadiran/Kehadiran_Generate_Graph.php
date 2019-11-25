@@ -13,8 +13,10 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <?php
-    include_once 'C:\xampp\htdocs\KPGKP\GKP_KP\DAO\KehadiranDaoImpl.php';
-    include_once 'C:\xampp\htdocs\KPGKP\GKP_KP\PDOUtility.php';
+
+    include_once '../../DAO/KehadiranDaoImpl.php';
+    include_once '../../PDOUtility.php';
+
     ?>
 
 </head>

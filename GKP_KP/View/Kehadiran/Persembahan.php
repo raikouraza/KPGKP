@@ -8,12 +8,12 @@ $mysqli = new mysqli($host,$user,$pass,$db) or die($mysqli->error);
 $data1 = '';
 $data2 = '';
 //query to get data from the table
-$sql = "SELECT Kehadiran_Tanggal, Kehadiran_Jumlah_Persembahan FROM tbkehadiran ";
+$sql = "SELECT kehadiran_Tanggal, kehadiran_Jumlah_Persembahan FROM tbkehadiran ";
 $result = mysqli_query($mysqli, $sql);
 //loop through the returned data
 while ($row = mysqli_fetch_array($result)) {
-    $data1 = $data1 . '"'. $row['Kehadiran_Tanggal'].'",';
-    $data2 = $data2 . '"'. $row['Kehadiran_Jumlah_Persembahan'] .'",';
+    $data1 = $data1 . '"'. $row['kehadiran_Tanggal'].'",';
+    $data2 = $data2 . '"'. $row['kehadiran_Jumlah_Persembahan'] .'",';
 }
 $data1 = trim($data1,",");
 $data2 = trim($data2,",");
@@ -62,6 +62,11 @@ $data2 = trim($data2,",");
     <link rel="stylesheet" type="text/css" href="../../datatables/datatables.css"/>
     <link rel="stylesheet" type="text/css" href="../../datatables/datatables.min.js"/>
     <!--data tables end-->
+    <!--Untuk download chart as image-->
+    <script src="../../js/canvas-toBlob.js"></script>
+    <script src="../../js/FileSaver.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+    <title></title>
 </head>
 <body>
 <div class="jumbotron text-center">
@@ -98,6 +103,19 @@ $data2 = trim($data2,",");
                     }
                 });
             </script>
+        <script>
+            function download() {
+                if (!isChartRendered) return; // return if chart not rendered
+                html2canvas(document.getElementById('chart'), {
+                    onrendered: function(canvas) {
+                        var link = document.createElement('a');
+                        link.href = canvas.toDataURL('image/jpeg');
+                        link.download = 'myChart.jpeg';
+                        link.click();
+                    }
+                })
+            }
+        </script>
             <div class="col-sm-3">
                 <button id="save-btn" name="save-btn" onclick="download()">Export to PNG</button>
                 <button id="save-btn2" name="save-btn" onclick="download()">Export to jpg</button>
@@ -123,10 +141,10 @@ $data2 = trim($data2,",");
                 $kehadiranDao = new KehadiranDaoImpl();
                 $kehadirans = $kehadiranDao->getAllKehadiran();
                 /* @var $kehadiran Kehadiran */
-                foreach($kehadirans as $kehadiran){
+                foreach($kehadirans as $value){
                     echo '<tr>';
-                    echo '<td>'.$kehadiran['Kehadiran_Tanggal'] .'</td>';
-                    echo '<td>'.$kehadiran['Kehadiran_Jumlah_Persembahan'] .'</td>';
+                    echo '<td>'.$value->kehadiran_Tanggal .'</td>';
+                    echo '<td>'.$value->kehadiran_Jumlah_Persembahan .'</td>';
 //                echo '<td><button onclick="deleteKehadiran(\'' .$kehadiran['Kehadiran_Id']. '\');">Delete</button><button onclick="updateKehadiran(' . $kehadiran['Kehadiran_Id'] .')">Update</button></td>';
 //                echo'</tr>';
                 }
@@ -148,7 +166,7 @@ $data2 = trim($data2,",");
 <script>
     $("#save-btn").click(function () {
         $("#chart").get(0).toBlob(function (blob) {
-            saveAs(blob, "chartKehadiran.png")
+            saveAs(blob, "chartPersembahan.png")
         })
     })
 </script>
@@ -156,7 +174,7 @@ $data2 = trim($data2,",");
 <script>
     $("#save-btn2").click(function () {
         $("#chart").get(0).toBlob(function (blob) {
-            saveAs(blob, "chartKehadiran.jpg")
+            saveAs(blob, "chartPersembahan.jpg")
         })
     })
 </script>

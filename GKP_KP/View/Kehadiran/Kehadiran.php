@@ -13,22 +13,20 @@ $data3 = '';
 $data4 = '';
 $data5 = $_POST["dateawal"];
 $data6 = $_POST["dateakhir"];
-
-
 //query to get data from the table
 if(!empty($data5)){
-    $sql = "SELECT Kehadiran_Jumlah_Pria, Kehadiran_Jumlah_Wanita, (Kehadiran_Jumlah_Pria+Kehadiran_Jumlah_Wanita) as Jumlah_Peserta,Kehadiran_Tanggal FROM tbkehadiran WHERE Kehadiran_Tanggal BETWEEN '$data5' AND '$data6'";
+    $sql = "SELECT kehadiran_Jumlah_Pria, kehadiran_Jumlah_Wanita, (kehadiran_Jumlah_Pria+kehadiran_Jumlah_Wanita) as Jumlah_Peserta,kehadiran_Tanggal FROM tbkehadiran WHERE kehadiran_Tanggal BETWEEN '$data5' AND '$data6'";
 }else{
-    $sql = "SELECT Kehadiran_Jumlah_Pria, Kehadiran_Jumlah_Wanita, (Kehadiran_Jumlah_Pria+Kehadiran_Jumlah_Wanita) as Jumlah_Peserta,Kehadiran_Tanggal FROM tbkehadiran LIMIT 10";
+    $sql = "SELECT kehadiran_Jumlah_Pria, kehadiran_Jumlah_Wanita, (kehadiran_Jumlah_Pria+kehadiran_Jumlah_Wanita) as Jumlah_Peserta,kehadiran_Tanggal FROM tbkehadiran LIMIT 10";
 }
 $result = mysqli_query($mysqli, $sql);
 //loop through the returned data
 while ($row = mysqli_fetch_array($result)) {
     //variabel di isi dengan data dari database
-    $data1 = $data1 . '"'. $row['Kehadiran_Jumlah_Pria'].'",';
-    $data2 = $data2 . '"'. $row['Kehadiran_Jumlah_Wanita'] .'",';
+    $data1 = $data1 . '"'. $row['kehadiran_Jumlah_Pria'].'",';
+    $data2 = $data2 . '"'. $row['kehadiran_Jumlah_Wanita'] .'",';
     $data3 = $data3 . '"'. $row['Jumlah_Peserta'] .'",';
-    $data4 = $data4 . '"'. $row['Kehadiran_Tanggal'] .'",';
+    $data4 = $data4 . '"'. $row['kehadiran_Tanggal'] .'",';
 }
 $data1 = trim($data1,",");
 $data2 = trim($data2,",");
@@ -68,14 +66,6 @@ $data4 = trim($data4,",");
     <script src="../../js/FileSaver.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
     <title></title>
-
-<!--    <script>-->
-<!--        $("save-btn").click(function () {-->
-<!--            $("#canvas".get(myChart).toBlob(function (blob) {-->
-<!--                saveAs(blob,"chart_kehadiran.png")-->
-<!--            }));-->
-<!--        });-->
-<!--    </script>-->
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -166,16 +156,16 @@ $data4 = trim($data4,",");
             </thead>
             <tbody>
             <?php
-                include_once 'C:\xampp\htdocs\KPGKP\GKP_KP\DAO\KehadiranDaoImpl.php';
-                include_once 'C:\xampp\htdocs\KPGKP\GKP_KP\PDOUtility.php';
+                include_once '../../DAO/KehadiranDaoImpl.php';
+                include_once '../../PDOUtility.php';
                 $kehadiranDao = new KehadiranDaoImpl();
                 $kehadirans = $kehadiranDao->getAllKehadiran();
-                /* @var $kehadiran Kehadiran */
-                foreach($kehadirans as $kehadiran){
-                    $total = ($kehadiran['Kehadiran_Jumlah_Wanita'] + $kehadiran['Kehadiran_Jumlah_Pria']);
+                /* @var $kehadirans Kehadiran */
+                foreach($kehadirans as  $value){
+                    $total = ($value->kehadiran_Jumlah_Wanita + $value->kehadiran_Jumlah_Pria);
                     echo '<tr>';
-                    echo '<td>'.$kehadiran['Kehadiran_Jumlah_Wanita'] .'</td>';
-                    echo '<td>'.$kehadiran['Kehadiran_Jumlah_Pria'] .'</td>';
+                    echo '<td>'.$value->kehadiran_Jumlah_Wanita .'</td>';
+                    echo '<td>'.$value->kehadiran_Jumlah_Pria .'</td>';
                     echo '<td>'.$total .'</td>';
                 }
             ?>
@@ -183,7 +173,6 @@ $data4 = trim($data4,",");
         </table>
     </div>
     <div class="col-sm-3">
-
     </div>
 </div>
 </body>
