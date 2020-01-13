@@ -135,8 +135,8 @@ $data4 = trim($data4,",");
         </script>
     </div>
     <div class="col-sm-3">
-        <button id="save-btn" name="save-btn" onclick="download()">Export to PNG</button>
-        <button id="save-btn2" name="save-btn" onclick="download()">Export to jpg</button>
+        <button id="save-btn" class="btn btn-primary" name="save-btn" onclick="download()">Export to PNG</button>
+        <button id="save-btn2" class="btn btn-primary" name="save-btn" onclick="download()">Export to jpg</button>
 <!--        button here-->
     </div>
 </div>

@@ -70,11 +70,11 @@ $data2 = trim($data2,",");
 </head>
 <body>
 <div class="jumbotron text-center">
-    <h1> Data Kehadiran Pria dan Wanita GKP </h1>
+    <h1> Data Jumlah Persembahan GKP </h1>
     <p></p>
 </div>
 <div class="row">
-    <div class="col-sm-3"><!--kosong-->></div>
+    <div class="col-sm-3"><!--kosong--></div>
     <div class="col-sm-6">
             <h1>Jumlah Persembahan</h1>
             <canvas id="chart" style="width: 100%; height: 65vh; background: #ffffff; border: 1px solid #555652; margin-top: 10px;"></canvas>
@@ -117,8 +117,8 @@ $data2 = trim($data2,",");
             }
         </script>
             <div class="col-sm-3">
-                <button id="save-btn" name="save-btn" onclick="download()">Export to PNG</button>
-                <button id="save-btn2" name="save-btn" onclick="download()">Export to jpg</button>
+                <button id="save-btn" name="save-btn" onclick="download()" class="btn btn-primary">Export to PNG</button>
+                <button id="save-btn2" name="save-btn" onclick="download()" class="btn btn-primary">Export to jpg</button>
             </div>
     </div>
 </div>

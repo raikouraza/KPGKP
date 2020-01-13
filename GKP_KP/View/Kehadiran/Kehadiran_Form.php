@@ -70,13 +70,17 @@ if (isset($submitted)) {
 
 </head>
 <body>
-<div id="container" align="center">
-    <form action="" method="POST">
-        <legend>Form Data Kehadiran</legend>
-        <table border="1x" align="center" cellpadding="5" cellspacing="5" style="text-align:center">
+<div class="jumbotron text-center">
+    <h1> Data Kehadiran Pria dan Wanita GKP </h1>
+    <p></p>
+</div>
+<div id="container" align="center" >
+    <form action="" method="POST" >
+        <legend><h1>Form Tambah Data Kehadiran</h1></legend>
+        <table  align="center" cellpadding="5" cellspacing="5" style="background-color: #efefef">
             <tr>
                 <td>Masukan ID Kehadiran:</td>
-                <td><input type="text" name="idkehadiran" class="form-control"  autofocus required placeholder="Masukan id kehadiran" align="center"><br></td>
+                <td><input type="text" name="idkehadiran" class="form-control"  autofocus required placeholder="Masukan id kehadiran" align="left"><br></td>
             </tr>
             <tr>
                 <td>Masukan Jumlah Wanita Yang Hadir:</td>
@@ -114,14 +118,14 @@ if (isset($submitted)) {
                 <td> <input  type="date" name="datePicker" id="datePicker" class="form-control"/></td>
             </tr>
             <tr>
+                <td></td>
                 <td>
                     <button type="submit" class="btn btn-primary" name="btnSubmit" >Submit</button>
-                    <!--                    <input type="submit" name="btnSubmit" value="addKehadiran" class="buttonButton-primary">-->
                 </td>
             </tr>
         </table>
         <div class="row">
-            <div class="col-sm-3"><!--kosong--></div>
+            <div class="col-sm-3"><br></div>
             <div class="col-sm-6">
                 <h1>Tabel Jumlah Kehadiran Pria dan Wanita</h1>
                 <table id="myTable" class="display" border="1px">
