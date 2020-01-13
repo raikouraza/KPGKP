@@ -54,7 +54,6 @@ class KehadiranController
             $kehadiran_jumlah_pria = filter_input(INPUT_POST,'jumlahpria');
             $kehadiran_jumlah_persembahan = filter_input(INPUT_POST,'jumlahpersembahan');
             $kehadiran_gereja_id = filter_input(INPUT_POST,'gerejaid');
-
             if (!Empty(array($kehadiran_id, $kehadiran_tanggal, $kehadiran_jumlah_wanita, $kehadiran_jumlah_pria, $kehadiran_jumlah_persembahan, $kehadiran_gereja_id))) {
                 $kehadiran->setKehadiranId($kehadiran_id);
                 $kehadiran->setKehadiranTanggal($kehadiran_tanggal);
@@ -71,19 +70,18 @@ class KehadiranController
 
 
     }
-    public function GraphbyDate(){
-        //Update Function
-        $kehadiran = new Kehadiran();
-        $submitted = filter_input(INPUT_POST,'btnSubmit');
-        if(isset($submitted)){
-
-            $kehadiran_tanggal1 = filter_input(INPUT_POST,'dateawal');
-
-            $kehadiran_tanggal2 = filter_input(INPUT_POST,'dateakhir');
-                $kehadiran->setKehadiranTanggal1($kehadiran_tanggal1);
-                $kehadiran->setKehadiranTanggal2($kehadiran_tanggal2);
-
-        }
-        $kehadirans = $this->KehadiranDao->getAllKehadiranTanggal();
-    }
+//    public function GraphbyDate(){
+//        //Update Function
+//        $kehadiran = new Kehadiran();
+//        $submitted = filter_input(INPUT_POST,'btnSubmit');
+//        if(isset($submitted)){
+//
+//            $kehadiran_tanggal1 = filter_input(INPUT_POST,'dateawal');
+//
+//            $kehadiran_tanggal2 = filter_input(INPUT_POST,'dateakhir');
+//                $kehadiran->setKehadiranTanggal1($kehadiran_tanggal1);
+//                $kehadiran->setKehadiranTanggal2($kehadiran_tanggal2);
+//        }
+//        $kehadirans = $this->KehadiranDao->getAllKehadiranTanggal();
+//    }
 }

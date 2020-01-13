@@ -10,5 +10,6 @@
     <orderEntry type="library" name="canvas-toBlob" level="application" />
     <orderEntry type="library" name="html2canvas" level="application" />
     <orderEntry type="library" name="FileSaver" level="application" />
+    <orderEntry type="library" name="daterangepicker" level="application" />
   </component>
 </module>

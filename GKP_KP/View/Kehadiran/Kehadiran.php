@@ -1,12 +1,24 @@
 <?php
-
+include_once '../../DAO/KehadiranDaoImpl.php';
+include_once '../../PDOUtility.php';
 /* Database connection settings */
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db = 'dbgkp';
-$mysqli = new mysqli($host,$user,$pass,$db) or die($mysqli->error);
-//utk storing data yang akan di echo
+//$host = 'localhost';
+//$user = 'root';
+//$pass = '';
+//$db = 'dbgkp';
+//$mysqli = new mysqli($host,$user,$pass,$db) or die($mysqli->error);
+////utk storing data yang akan di echo
+///
+///
+/// //loop through the returned data
+////while ($row = mysqli_fetch_array($result)) {
+////    //variabel di isi dengan data dari database
+////    $data1 = $data1 . '"'. $row['kehadiran_Jumlah_Pria'].'",';
+////    $data2 = $data2 . '"'. $row['kehadiran_Jumlah_Wanita'] .'",';
+////    $data3 = $data3 . '"'. $row['Jumlah_Peserta'] .'",';
+////    $data4 = $data4 . '"'. $row['kehadiran_Tanggal'] .'",';
+////}
+$kehadiranDao = new KehadiranDaoImpl();
 $data1 = '';
 $data2 = '';
 $data3 = '';
@@ -15,18 +27,25 @@ $data5 = $_POST["dateawal"];
 $data6 = $_POST["dateakhir"];
 //query to get data from the table
 if(!empty($data5)){
-    $sql = "SELECT kehadiran_Jumlah_Pria, kehadiran_Jumlah_Wanita, (kehadiran_Jumlah_Pria+kehadiran_Jumlah_Wanita) as Jumlah_Peserta,kehadiran_Tanggal FROM tbkehadiran WHERE kehadiran_Tanggal BETWEEN '$data5' AND '$data6'";
+    $row = $kehadiranDao->getAllKehadiranTanggal();
+    /* @var $row Kehadiran */
+    print_r($row);
+    while($row){
+        $data1 = $data1 . '"'. $row['jumlahpria'].'",';
+        $data2 = $data2 . '"'. $row['jumlahwanita'] .'",';
+        $data3 = $data3 . '"'. $row['jumlahhadirin'] .'",';
+        $data4 = $data4 . '"'. $row['tanggal'] .'",';
+    }
 }else{
-    $sql = "SELECT kehadiran_Jumlah_Pria, kehadiran_Jumlah_Wanita, (kehadiran_Jumlah_Pria+kehadiran_Jumlah_Wanita) as Jumlah_Peserta,kehadiran_Tanggal FROM tbkehadiran LIMIT 10";
-}
-$result = mysqli_query($mysqli, $sql);
-//loop through the returned data
-while ($row = mysqli_fetch_array($result)) {
-    //variabel di isi dengan data dari database
-    $data1 = $data1 . '"'. $row['kehadiran_Jumlah_Pria'].'",';
-    $data2 = $data2 . '"'. $row['kehadiran_Jumlah_Wanita'] .'",';
-    $data3 = $data3 . '"'. $row['Jumlah_Peserta'] .'",';
-    $data4 = $data4 . '"'. $row['kehadiran_Tanggal'] .'",';
+    $row = $kehadiranDao->getAllKehadiran();
+    /* @var $row Kehadiran */
+    print_r($row);
+    while($row){
+        $data1 = $data1 . '"'. $row['jumlahpria'].'",';
+        $data2 = $data2 . '"'. $row['jumlahwanita'] .'",';
+        $data3 = $data3 . '"'. $row['jumlahhadirin'] .'",';
+        $data4 = $data4 . '"'. $row['tanggal'] .'",';
+    }
 }
 $data1 = trim($data1,",");
 $data2 = trim($data2,",");
@@ -156,10 +175,7 @@ $data4 = trim($data4,",");
             </thead>
             <tbody>
             <?php
-                include_once '../../DAO/KehadiranDaoImpl.php';
-                include_once '../../PDOUtility.php';
-                $kehadiranDao = new KehadiranDaoImpl();
-                $kehadirans = $kehadiranDao->getAllKehadiran();
+            $kehadirans = $kehadiranDao->getAllKehadiran();
                 /* @var $kehadirans Kehadiran */
                 foreach($kehadirans as  $value){
                     $total = ($value->kehadiran_Jumlah_Wanita + $value->kehadiran_Jumlah_Pria);
