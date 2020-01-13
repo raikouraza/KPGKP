@@ -4,7 +4,6 @@ class KehadiranDaoImpl
     public function getAllKehadiran()
     {
         $link = PDOUtility::createMySQLConnection();
-//        $query = "SELECT * FROM tbkehadiran ORDER BY kehadiran_ID ";
         $query = "CALL kehadiranGetAll()";
         $result = $link->prepare($query);
         $result->execute();
@@ -14,7 +13,6 @@ class KehadiranDaoImpl
     public function getAllKehadiranTanggal()
     {
         $link = PDOUtility::createMySQLConnection();
-//        $query = "SELECT * FROM tbkehadiran ORDER BY kehadiran_ID ";
         $query = "CALL kehadiranByDate()";
         $result = $link->prepare($query);
         $result->execute();
